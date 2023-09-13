@@ -1,0 +1,15 @@
+PROBLEM 4
+
+array = 1 2 4 3
+
+ln(ar, 4, 0) -> 4
+	nln = ln(ar , 4 , 1) -> 4
+		nln = ln(ar , 4, 2) -> 4
+			nln = ln(ar , 4, 3) -> 3
+
+array = 1 2 3 4
+
+ln(ar, 4, 0) -> 4
+	nln = ln(ar , 4 , 1) -> 4
+		nln = ln(ar , 4, 2) -> 4
+			nln = ln(ar , 4, 3) -> 4

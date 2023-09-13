@@ -1,0 +1,125 @@
+#include <iostream>
+
+struct MyStack {
+    int* stack;
+    int top;
+    int maxSize;
+};
+
+void Initialize(MyStack& s, int maxSize) {
+    s.stack = new int[maxSize];
+    s.top = -1;
+    s.maxSize = maxSize;
+}
+
+void Push(MyStack& s, int element) {
+    if (s.top == s.maxSize - 1) {
+        std::cout << "Error: Stack overflow" << std::endl;
+        return;
+    }
+    s.stack[++s.top] = element;
+}
+
+int Pop(MyStack& s) {
+    if (s.top == -1) {
+        std::cout << "Error: Stack underflow" << std::endl;
+        return -1;
+    }
+    return s.stack[s.top--];
+}
+
+int GetMaxSize(MyStack& s) {
+    return s.maxSize;
+}
+
+int CurrentSize(MyStack& s) {
+    return s.top + 1;
+}
+
+bool IsEmpty(MyStack& s) {
+    return s.top == -1;
+}
+
+int main()
+{
+    MyStack s1, s2;
+
+    int size1, size2;
+    std::cout << "Enter the size of stack 1: ";
+    std::cin >> size1;
+
+    std::cout << "Enter the size of stack 2: ";
+    std::cin >> size2;
+
+    Initialize(s1, size1);
+    Initialize(s2, size2);
+
+    while(1){
+        int input = 0;
+        std::cout << "Enter 1 to work on stack1 and 2 to work on stack 2: (0 to exit)";
+        std::cin >> input;
+
+        int Sin = 0;
+        if(input == 1){
+            std::cout << "Enter Input accordingly:\n1. Push\n2. Pop\n3. Get max size.\n4. Current Size.\n5. Is Empty.\nInput: ";
+            std::cin >> Sin;
+
+            if(Sin == 1){
+                int element = 0;
+                std::cout << "Enter element: ";
+                std::cin >> element;
+                Push(s1, element);
+            }
+
+            else if(Sin == 2){
+                Pop(s1);
+            }
+
+            else if(Sin == 3){
+                std::cout << "Max size of stack 1: " << GetMaxSize(s1) << std::endl;
+            }
+
+            else if(Sin == 4){
+                std::cout << "Current size of stack 1: " << CurrentSize(s1) << std::endl;
+            }
+
+            else if(Sin == 5){
+                std:: cout << (IsEmpty(s1) ? "Yes" : "No") << std::endl;
+            }
+        }
+
+        else if(input == 2){
+            std::cout << "Enter Input accordingly:\n1. Push\n2. Pop\n3. Get max size.\n4. Current Size.\n5. Is Empty.\nInput: ";
+            std::cin >> Sin;
+
+            if(Sin == 1){
+                int element = 0;
+                std::cout << "Enter element: ";
+                std::cin >> element;
+                Push(s2, element);
+            }
+
+            else if(Sin == 2){
+                Pop(s2);
+            }
+
+            else if(Sin == 3){
+                std::cout << "Max size of stack 1: " << GetMaxSize(s2) << std::endl;
+            }
+
+            else if(Sin == 4){
+                std::cout << "Current size of stack 1: " << CurrentSize(s2) << std::endl;
+            }
+
+            else if(Sin == 5){
+                std:: cout << (IsEmpty(s2) ? "Yes" : "No") << std::endl;
+            }
+        }
+
+        else if(input == 0)
+            break;
+
+        else
+            std::cout << "Wrong input." << std::endl;
+    }
+}

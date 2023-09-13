@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Student {
+    string name;
+    int age;
+    string department;
+    int year;
+};
+
+// Function to read student data
+void ReadStudentData(Student* students, int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Enter student " << i + 1 << " information:" << endl;
+        cout << "Name: ";
+        cin >> students[i].name;
+        cout << "Age: ";
+        cin >> students[i].age;
+        cout << "Department: ";
+        cin >> students[i].department;
+        cout << "Year: ";
+        cin >> students[i].year;
+    }
+}
+
+// Function to print student data
+void PrintStudentData(Student* students, int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Student " << i + 1 << " information:" << endl;
+        cout << "Name: " << students[i].name << endl;
+        cout << "Age: " << students[i].age << endl;
+        cout << "Department: " << students[i].department << endl;
+        cout << "Year: " << students[i].year << endl;
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter the number of students: ";
+    cin >> n;
+
+    // Array of struct to store student data
+    Student* students = new Student[n];
+
+    ReadStudentData(students, n);
+    PrintStudentData(students, n);
+
+    free(students);
+    return 0;
+}
